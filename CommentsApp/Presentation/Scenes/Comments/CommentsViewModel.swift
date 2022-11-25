@@ -26,7 +26,7 @@ class CommentsViewModel: BaseViewModel<CommentsViewModel.State, CommentsViewMode
             case back
         }
         
-        public let ten: Int = 10
+        public let paginationStep: Int = 10
         
         public fileprivate(set) var showedScreen: Screen?
         public fileprivate(set) var comments: [Comment] = []
@@ -49,7 +49,7 @@ class CommentsViewModel: BaseViewModel<CommentsViewModel.State, CommentsViewMode
             state.bound = bound
             state.first = Int(first)!
             state.last = Int(last)!
-            if bound > state.ten {
+            if bound > state.paginationStep {
                 state.showLoading = true
             }
         case .back:
@@ -60,20 +60,20 @@ class CommentsViewModel: BaseViewModel<CommentsViewModel.State, CommentsViewMode
     
     @MainActor
     func getComments() {
-        state.bound -= state.ten
+        state.bound -= state.paginationStep
         var last: Int = state.last
-        if state.bound > state.ten {
+        if state.bound > state.paginationStep {
             state.showLoading = true
-            state.first += state.ten
-            last = state.first + state.ten
+            state.first += state.paginationStep
+            last = state.first + state.paginationStep
         } else {
-            state.first += state.ten
+            state.first += state.paginationStep
         }
         
         Task {
-            let comments = await APIService.getComments(first: state.first, last: last)
+            let comments = await CommentsRepository().getComments(lowerBound: state.first, upperBound: last)
             state.comments += comments
-            if state.bound < state.ten {
+            if state.bound < state.paginationStep {
                 state.showLoading = false
             }
         }

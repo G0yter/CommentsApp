@@ -33,6 +33,7 @@ class MainViewModel: BaseViewModel<MainViewModel.State, MainViewModel.Action, Ne
         //Numbers
         public fileprivate(set) var firstNumber: String = ""
         public fileprivate(set) var secondNumber: String = ""
+        public let paginationStep: Int = 10
         //Comments
         public fileprivate(set) var comments: [Comment] = []
         public fileprivate(set) var bound: Int = 0
@@ -76,7 +77,13 @@ class MainViewModel: BaseViewModel<MainViewModel.State, MainViewModel.Action, Ne
         state.indicatorShow = true
         state.task = Task {
             try? await Task.sleep(nanoseconds: 3_000_000_000)
-            let comments = await CommentsRepositories(first: Int(state.firstNumber)!, last:Int(state.secondNumber)!).getComments()
+            
+            var lowerBound: Int = Int(state.firstNumber)!
+            var upperBound: Int = Int(state.secondNumber)!
+            let difference = upperBound - lowerBound
+            if difference < state.paginationStep { upperBound = lowerBound + difference } else { upperBound = lowerBound + state.paginationStep }
+            
+            let comments = await CommentsRepository().getComments(lowerBound: Int(state.firstNumber)!, upperBound: Int(state.secondNumber)!)
             if Task.isCancelled {
                 state.indicatorShow = false
             } else {

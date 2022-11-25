@@ -279,18 +279,18 @@
 		84C327822930E3FB003924F1 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				84C327832930E952003924F1 /* Repositiries */,
+				84C327832930E952003924F1 /* Repository */,
 				843E34CB2930DBEF0084379A /* Network */,
 			);
 			path = Data;
 			sourceTree = "<group>";
 		};
-		84C327832930E952003924F1 /* Repositiries */ = {
+		84C327832930E952003924F1 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				84C327842930E9BE003924F1 /* CommentsRepositories.swift */,
 			);
-			path = Repositiries;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
