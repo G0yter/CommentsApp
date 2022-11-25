@@ -76,6 +76,8 @@ class MainViewModel: BaseViewModel<MainViewModel.State, MainViewModel.Action, Ne
         state.indicatorShow = true
         state.task = Task {
             
+            try? await Task.sleep(nanoseconds: 3_000_000_000) 
+            
             let first: Int = Int(state.firstNumber)!
             var last: Int = Int(state.secondNumber)!
             let difference = last - first

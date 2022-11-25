@@ -64,8 +64,11 @@ extension CommentsViewController {
         private var listComments: some View {
             ForEach(viewModel.state.comments, id: \.id) { comment in
                 VStack {
-                    Text(comment.id!.description)
-                    Text(comment.email!)
+                    HStack {
+                        Text(comment.id.description)
+                        Text(comment.email!)
+                    }
+                    .lineLimit(1)
                     Divider()
                         .frame(height: 1)
                         .overlay(Color.orange)
