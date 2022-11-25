@@ -48,7 +48,7 @@ extension CommentsViewController {
                         .foregroundColor(.orange)
                 }
             } center: {
-                Text("Comments")
+                Text(String(localized: "comments.title"))
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundColor(.orange)
@@ -93,7 +93,7 @@ extension CommentsViewController {
             
             return VStack {
                 if loadingBinding.wrappedValue {
-                    Text("Loading...")
+                    Text(String(localized: "Loading..."))
                         .onAppear(
                             perform: {
                                 Task {

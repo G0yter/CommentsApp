@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  CommentsApp
+
+  Created by Admin on 25.11.2022.
+  
+*/
+/* - Main View */
+"main.title" = "Main";
+"main.download.comments" = "Download Comments";
+"main.download.cancel" = "Cancel download";
+"main.number.first.title" = "First number";
+"main.number.first.placeholder" = "L";
+"main.number.second.title" = "Second number";
+"main.number.second.placeholder" = "U";
+"main.comments.show" = "Show comments";
+/* - Comments View */
+"comments.title" = "Comments";
+"comments.loading" = "Loading...";
+/* - Button */
+"button.ok" = "OK";

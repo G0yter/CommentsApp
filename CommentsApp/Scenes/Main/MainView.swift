@@ -47,9 +47,9 @@ extension MainViewController {
             )
             .alert(isPresented: alertBinding) {
                 Alert(
-                    title: Text("Download Comments"),
+                    title: Text(String(localized: "main.download.comments")),
                     message: Text(viewModel.state.alertText),
-                    dismissButton: .cancel(Text("OK"), action: {
+                    dismissButton: .cancel(Text(String(localized: "button.ok")), action: {
                         alertBinding.wrappedValue = false
                     })
                 )
@@ -58,7 +58,7 @@ extension MainViewController {
         
         //Title
         private var titleView: some View {
-            Text("Main")
+            Text(String(localized: "main.title"))
                 .font(.title2)
                 .fontWeight(.semibold)
                 .foregroundColor(.orange)
@@ -71,7 +71,7 @@ extension MainViewController {
             Button {
                 viewModel.action(.cancelDownloadComments)
             } label: {
-                Text("Cancel download")
+                Text(String(localized: "main.download.cancel"))
                     .bold()
                     .foregroundColor(.white)
             }
@@ -88,7 +88,7 @@ extension MainViewController {
             
             return VStack {
                 HStack (alignment: .center) {
-                    TextField("First number", text: firstNumberBinding)
+                    TextField(String(localized: "main.number.first.title"), text: firstNumberBinding)
                         .keyboardType(.numberPad)
                         .colorScheme(.light)
                         .padding(.leading, 70)
@@ -98,7 +98,7 @@ extension MainViewController {
                 .frame(height: 40)
                 .overlay (
                     HStack{
-                        Text("L")
+                        Text(String(localized: "main.number.first.placeholder"))
                             .foregroundColor(.orange)
                         Spacer()
                     }
@@ -126,7 +126,7 @@ extension MainViewController {
             
             return VStack {
                 HStack (alignment: .center) {
-                    TextField("Second number", text: secondNumberBinding)
+                    TextField(String(localized: "main.number.second.title"), text: secondNumberBinding)
                         .keyboardType(.numberPad)
                         .colorScheme(.light)
                         .padding(.leading, 70)
@@ -136,7 +136,7 @@ extension MainViewController {
                 .frame(height: 40)
                 .overlay (
                     HStack{
-                        Text("U")
+                        Text(String(localized: "main.number.second.placeholder"))
                             .foregroundColor(.orange)
                         Spacer()
                     }
@@ -166,7 +166,7 @@ extension MainViewController {
                 Button {
                     validNumbersBinding.wrappedValue ? viewModel.getComments() : nil
                 } label: {
-                    Text("Show comments")
+                    Text(String(localized: "main.comments.show"))
                         .padding()
                         .font(.body.weight(.semibold))
                         .foregroundColor(validNumbersBinding.wrappedValue ? Color.white : Color.white)
